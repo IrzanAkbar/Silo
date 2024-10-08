@@ -170,7 +170,7 @@ export default function () {
                   onClick: () => {
                     window.open('https://www.instagram.com/zannonly_', '_blank');
                   },
-                  title: 'Website',
+                  title: 'Instagram',
                 },
                 {
                   icon: 'i-mingcute-wechat-fill',
