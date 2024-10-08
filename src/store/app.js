@@ -4,9 +4,7 @@ import { getJsonDataFromLocalStorage, getLocalStorage, setJsonDataToLocalStorage
 import { LOCAL_STORAGE_KEY } from '../utils/types';
 
 const activeModels = atom(getJsonDataFromLocalStorage(LOCAL_STORAGE_KEY.ACTIVE_MODELS, [
-  'Qwen/Qwen2.5-7B-Instruct',
-  'THUDM/glm-4-9b-chat',
-  '01-ai/Yi-1.5-9B-Chat-16K',
+  'Qwen/Qwen2.5-72B-Instruct',
 ]))
 
 export const useActiveModels = () => {
