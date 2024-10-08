@@ -89,20 +89,6 @@ export default function () {
         />
 
         <span className="mr-auto"></span>
-        {!!data && (
-          <>
-            <i
-              className="i-ri-money-dollar-circle-line cursor-pointer"
-              onClick={() => runAsync()}
-            ></i>
-            <span
-              className="ml-1 mr-8 font-semibold text-lg opacity-75 cursor-pointer"
-              onClick={() => runAsync()}
-            >
-              {data.data.balance}
-            </span>
-          </>
-        )}
 
         {!isImageMode && (
           <Tooltip placement="bottom" content={t('新增模型')}>
@@ -132,7 +118,7 @@ export default function () {
             ' cursor-pointer mr-4'
           }
           onClick={() => setDarkMode(!isDark)}
-        ></i>
+        ></ i>
         <Dropdown
           maxColumnWidth="160"
           direction="left"
@@ -152,17 +138,6 @@ export default function () {
               onClick: () => setIsZenMode(!isZenMode),
               hidden: isMobile,
               title: t(isZenMode ? '退出禅模式' : '禅模式'),
-            },
-            {
-              icon: 'i-ri-key-line',
-              title: t('修改密钥'),
-              onClick: () => setShowPopup(true),
-            },
-            {
-              icon: 'i-mingcute-plugin-2-fill',
-              onClick: () => customModelRef.current.open(),
-              hidden: isMobile || isImageMode,
-              title: t('自定义模型'),
             },
             {
               icon: 'iconify mingcute--translate-2-line',
@@ -239,30 +214,13 @@ export default function () {
                   },
                   title: t('联系开发者'),
                 },
-                {
-                  icon: 'i-logos-chrome',
-                  onClick: () => {
-                    window.open(
-                      'https://chromewebstore.google.com/detail/silo-siliconcloud-api-pla/nakohnjaacfmjiodegibhnepfmioejln',
-                      '_blank'
-                    );
-                  },
-                  title: t('Chrome 扩展'),
-                },
-                {
-                  icon: 'i-logos-microsoft-edge',
-                  onClick: () => {
-                    window.open(
-                      'https://microsoftedge.microsoft.com/addons/detail/silo-siliconcloud-api-p/kjfjhcmdndibdlfofffhoehailbdlbod',
-                      '_blank'
-                    );
-                  },
-                  title: 'Edge Addons',
-                },
               ].map(item => ({
                 prefixIcon: <i className={item.icon + ' mr-0'} />,
                 content: item.title,
                 onClick: item.onClick,
+                disabled: item.disabled,
+                value: item.title,
+                children: item.children,
               })),
             },
           ]
@@ -283,80 +241,6 @@ export default function () {
           onClose={() => customModelRef.current.close()}
         />
       </div>
-      {showPopup && (
-        <div
-          onClick={() => data && setShowPopup(false)}
-          className="fixed z-50 top-0 left-0 w-full h-full bg-black  filter backdrop-blur-sm bg-opacity-50 flex justify-center items-center"
-        >
-          <div className="relative w-10/12 lg:w-[600px] h-[400px] bg-white dark:bg-gray-900 rounded-lg p-4 text-center leading-4">
-            {!!data && (
-              <i
-                className="i-mingcute-close-line opacity-70 text-2xl absolute top-4 right-4 cursor-pointer"
-                onClick={() => setShowPopup(false)}
-              ></i>
-            )}
-            <div
-              className="w-full h-full flex flex-col justify-center items-center"
-              onClick={e => e.stopPropagation()}
-            >
-              <div className="flex items-center justify-center mb-6">
-                <img src="/logo.svg" alt="SiloChat" className="h-16 mr-8" />
-                <img src={ScLogo} alt="硅基流动" className="h-16 rounded-md" />
-              </div>
-              <input
-                type="text"
-                value={secretKey}
-                autoFocus={!secretKey}
-                onChange={e => setSecretKey(e.target.value)}
-                placeholder={t('在这里输入 SiliconCloud API 密钥')}
-                className="w-full h-12 outline-none text-center bg-gray-100 dark:bg-gray-800 rounded-xl px-4"
-              />
-
-              {!!secretKey && !!error && (
-                <span className="mt-4 text-sm text-red-400">
-                  {error.message}
-                </span>
-              )}
-              <span className="mt-6 text-sm text-gray-500">
-                {t('intro1')}
-                <br />
-                <a
-                  className="mx-1"
-                  target="_blank"
-                  href="https://cloud.siliconflow.cn?referrer=clzs72zzb02jqmp5vn9s5tj15"
-                >
-                  {t('现在注册 SiliconCloud')}
-                </a>
-                {t('官方也会赠送 14 元额度可用于体验付费模型')}
-              </span>
-
-              <span className="mt-4 text-sm text-gray-500">
-                {t('如您已有账号，请')}
-                <a
-                  className="mx-1"
-                  href="https://cloud.siliconflow.cn/account/ak"
-                  target="_blank"
-                >
-                  {t('点击这里获取 SiliconCloud 密钥')}
-                </a>
-              </span>
-
-              <span className="mt-4 text-sm text-gray-500">
-                {t('您的密钥将仅在浏览器中存储，请仅在安全的设备上使用本应用')}
-              </span>
-              <span
-                className="text-blue-400 cursor-pointer mt-4 text-sm"
-                onClick={() => {
-                  setSecretKey();
-                  setShowPopup(false);
-                }}
-              >
-                🤖 {t('先不注册，用用你的')} 🤖
-              </span>
-            </div>
-          </div>
-        </div>
-      )}
       <CustomModelDrawer ref={customModelRef} />
     </>
   );
