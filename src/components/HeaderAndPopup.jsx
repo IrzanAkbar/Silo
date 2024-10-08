@@ -159,11 +159,18 @@ export default function () {
               divider: true,
               children: [
                 {
-                  icon: 'i-ri-github-fill',
+                  icon: 'i-ri-global-fill',
                   onClick: () => {
-                    window.open('https://github.com/KwokKwok/Silo', '_blank');
+                    window.open('https://irzan.us', '_blank');
                   },
-                  title: 'GitHub',
+                  title: 'Website',
+                },
+                {
+                  icon: 'i-ri-instagram-fill',
+                  onClick: () => {
+                    window.open('https://www.instagram.com/zannonly_', '_blank');
+                  },
+                  title: 'Website',
                 },
                 {
                   icon: 'i-mingcute-wechat-fill',
@@ -178,7 +185,7 @@ export default function () {
                       footer: (
                         <>
                           <a
-                            href={`mailto:kwokglory@outlook.com?subject=${encodeURIComponent(
+                            href={`mailto:admin@irzan.us?subject=${encodeURIComponent(
                               'Silo Feedback'
                             )}&body=${encodeURIComponent('')}`}
                             onClick={() => {
@@ -194,7 +201,7 @@ export default function () {
                             </Button>
                           </a>
                           <CopyToClipboard
-                            text="17681890733"
+                            text="6281342111149"
                             onCopy={() => {
                               message.success(t('已复制'));
                               notify.close();
@@ -244,4 +251,4 @@ export default function () {
       <CustomModelDrawer ref={customModelRef} />
     </>
   );
-}
+      }
