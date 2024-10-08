@@ -1,8 +1,8 @@
 const resources = [
   {
     _key: 'title',
-    en: 'Silo - Multi-model chat, text-to-image',
-    zh: 'Silo - 多模型对话，文生图',
+    en: 'Hat - Multi-model chat, text-to-image',
+    zh: 'Hat - 多模型对话，文生图',
   },
   {
     en: 'This place is so quiet',
@@ -164,7 +164,7 @@ const resources = [
   },
   {
     zh: '您可以通过邮箱或是微信直接联系开发者',
-    en: 'You can contact the developer directly via email or WeChat'
+    en: 'You can contact the developer directly via email or WhatsApp'
   },
   {
     zh: '发邮件',
@@ -172,7 +172,7 @@ const resources = [
   },
   {
     zh: '使用微信',
-    en: 'Use WeChat'
+    en: 'Use WhatsApp'
   },
   {
     zh: '已复制',
